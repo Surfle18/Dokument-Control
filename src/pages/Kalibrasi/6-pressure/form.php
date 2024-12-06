@@ -110,6 +110,17 @@ if (isset($_GET['alert'])) {
             padding: 2px;
         }
 
+        .comment {
+            border: 1px solid gray;
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            box-shadow: 8px 8px 13px rgba(48, 47, 47, 0.267);
+            border-radius: 20px;
+            padding: 2px;
+        }
+
         .divc {
             width: 400px;
         }
@@ -342,7 +353,7 @@ if (isset($_GET['alert'])) {
                             <button type="button" class="btn btn-outline-secondary" id="Button-C"
                                 onclick="ugabungan(), copyValue()">Hitung U Gabungan</button>
                             <button type="button" class="btn btn-outline-secondary" id="Button-C"
-                                onclick="visibility3(), copyValue()">Komentar</button>
+                                onclick="komentar(), copyValue()">Komentar</button>
                             <button type="button" class="btn btn-outline-secondary" id="Button-C"
                                 onclick="visibility3(), copyValue()">Simpan</button>
                         </div>
@@ -609,7 +620,7 @@ if (isset($_GET['alert'])) {
                                         id="Ugabungan10"></td>
                             </tr>
                             <tr>
-                                <td class="border bown-b"><input type="text" readonly name="Unaik11" id="Unaik11"></td>
+                                <td class="border bown-b"></td><input type="text" readonly name="Unaik11" id="Unaik11"></td>
                                 <td class="border bown-b"><input type="text" readonly name="Uturun11" id="Uturun11">
                                 </td>
                                 <td class="border bown-b"><input type="text" readonly name="Unaikt11" id="Unaikt11">
@@ -668,12 +679,20 @@ if (isset($_GET['alert'])) {
                             <button class="btn btn-danger" type="button" onclick="copyValue()">Hitung</button>
                         </div>
                     </div>
-
-                    <div class="simpan" id="komentar">
-                        <div class="email">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
+                    
+                    <br>
+                    <div class="tekanan" id="komentar">
+                        <div class="comment" style="width: fit-content; height: 100px;">
+                            <table>
+                                <tr>
+                                    <td>Layak</td>
+                                    <td><input type="radio" name="layak" id="layak"></td>
+                                    <td>Tidak Layak</td>
+                                    <td><input type="radio" name="tidakLayak" id="tidakLayak"></td>
+                                </tr>
+                            </table>
                         </div>
+                        <input type="hidden" name="catatan" id="catatan">
                     </div>
 
                     <br>
@@ -803,6 +822,16 @@ if (isset($_GET['alert'])) {
                         }
                     });
                 });
+            </script>
+
+            <script>
+                layak = document.getElementById('layak');
+                tlayak = document.getElementById('tidakLayak');
+                komentar = document.getElementById('komentar');
+                
+                function koment() {
+
+                }
             </script>
 
             <script>
@@ -953,12 +982,12 @@ if (isset($_GET['alert'])) {
 
                     if (komentar.classList.contains("tekanan")) {
                         komentar.classList.remove("tekanan");
-                        komentar.classList.add("naik");
+                        komentar.classList.add("simpan");
                         tekanannaik.classList.remove("naik");
                         tekanannaik.classList.add("tekanan");
                         tekananturun.classList.remove("turun");
                         tekananturun.classList.add("tekanan");;
-                        ugabungan.classList.remove("simpan");
+                        ugabungan.classList.remove("naik");
                         ugabungan.classList.add("tekanan");
                         simpan.classList.remove("simpan");
                         simpan.classList.add("tekanan");
